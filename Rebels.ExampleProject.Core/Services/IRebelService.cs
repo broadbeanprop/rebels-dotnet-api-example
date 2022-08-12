@@ -4,9 +4,9 @@ namespace Rebels.ExampleProject.Core.Services;
 
 public interface IRebelService
 {
-    Task<IEnumerable<RebelDto>> GetRebels(CancellationToken cancellationToken);
-    Task<RebelDto?> GetRebelById(Guid id, CancellationToken cancellationToken);
-    Task<RebelDto> AddRebel(RebelDto rebelDto, CancellationToken cancellationToken);
-    Task<RebelDto> UpdateRebel(RebelDto rebelDto, CancellationToken cancellationToken);
-    Task DeleteRebel(RebelDto rebelDto, CancellationToken cancellationToken);
+    Task<IEnumerable<RebelDto>> GetRebelsAsync(CancellationToken cancellationToken);
+    Task<RebelDto?> GetRebelByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<RebelDto> AddRebelAsync(RebelDto rebelDto, CancellationToken cancellationToken);
+    Task<RebelDto> UpdateRebelAsync(RebelDto rebelDto, CancellationToken cancellationToken);
+    Task DeleteRebelAsync(RebelDto rebelDto, CancellationToken cancellationToken);
 }

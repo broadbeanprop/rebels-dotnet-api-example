@@ -21,7 +21,7 @@ public class RebelsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<RebelDto>))]
     public async Task<IActionResult> GetRebelsList(CancellationToken cancellationToken)
     {
-        return Ok(await _rebelService.GetRebels(cancellationToken));
+        return Ok(await _rebelService.GetRebelsAsync(cancellationToken));
     }
 
     [HttpGet("{id:guid}", Name = nameof(GetRebelById))]
@@ -29,7 +29,7 @@ public class RebelsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     public async Task<IActionResult> GetRebelById(Guid id, CancellationToken cancellationToken)
     {
-        var result = await _rebelService.GetRebelById(id, cancellationToken);
+        var result = await _rebelService.GetRebelByIdAsync(id, cancellationToken);
         return result != null ? Ok(result) : NotFound();
     }
 
@@ -38,7 +38,7 @@ public class RebelsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
     public async Task<IActionResult> PostRebel([FromBody] RebelDto rebel, CancellationToken cancellationToken)
     {
-        var result =  await _rebelService.AddRebel(rebel, cancellationToken);
+        var result =  await _rebelService.AddRebelAsync(rebel, cancellationToken);
         return CreatedAtAction(nameof(GetRebelById), new { id = result.Id }, result);
     }
 }
