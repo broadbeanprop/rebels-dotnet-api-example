@@ -1,9 +1,8 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Rebels.ExampleProject.Data.Entities;
-using System.ComponentModel.DataAnnotations;
 
-public class RebelEntity
+public class Rebel
 {
     [Key]
     public Guid Id { get; set; } = Guid.NewGuid();

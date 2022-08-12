@@ -1,6 +1,10 @@
-using Rebels.ExampleProject.CQRS;
+using Rebels.ExampleProject.Core;
+using Rebels.ExampleProject.Core.AutoMapper;
+using Rebels.ExampleProject.Core.Services;
+using Rebels.ExampleProject.Core.Services.Implementations;
 using Rebels.ExampleProject.Data;
-using Rebels.ExampleProject.Db;
+using Rebels.ExampleProject.Data.Repositories;
+using Rebels.ExampleProject.Data.Repositories.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +15,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddCQRS();
+builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+
+builder.Services.AddTransient<IRebelRepository, RebelRepository>();
+builder.Services.AddTransient<IRebelService, RebelService>();
 
 var app = builder.Build();
 

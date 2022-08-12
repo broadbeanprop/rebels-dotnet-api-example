@@ -1,4 +1,4 @@
-﻿namespace Rebels.ExampleProject.Dtos.V1;
+﻿namespace Rebels.ExampleProject.Api.Dtos;
 
 public class RebelDto
 {

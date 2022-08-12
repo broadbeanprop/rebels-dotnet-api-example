@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rebels.ExampleProject.CQRS\Rebels.ExampleProject.CQRS.csproj" />
+    <ProjectReference Include="..\Rebels.ExampleProject.Core\Rebels.ExampleProject.Core.csproj" />
+    <ProjectReference Include="..\Rebels.ExampleProject.Data\Rebels.ExampleProject.Data.csproj" />
   </ItemGroup>
 
 </Project>
