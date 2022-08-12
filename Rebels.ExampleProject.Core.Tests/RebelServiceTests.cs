@@ -29,16 +29,16 @@ public class RebelServiceTests
     public async Task Test1()
     {
         var rebelDtoFixture = _fixture.Create<RebelDto>();
+        var rebelFixture = _fixture
+            .Build<Rebel>()
+            .With(x => x.Id, rebelDtoFixture.Id)
+            .With(x => x.Name, rebelDtoFixture.Name)
+            .Create();
 
         _repositoryMock
             .Setup(x => 
                 x.CreateAsync(It.IsAny<Rebel>(), It.IsAny<CancellationToken>()))
-            .ReturnsAsync(
-                new Rebel
-                {
-                    Id = rebelDtoFixture.Id,
-                    Name = rebelDtoFixture.Name
-                });
+            .ReturnsAsync(rebelFixture);
         
         var service = new RebelService(_repositoryMock.Object, _mapper);
 
